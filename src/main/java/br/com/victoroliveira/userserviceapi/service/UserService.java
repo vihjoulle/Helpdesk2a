@@ -17,7 +17,10 @@ public class UserService {
 
     public UserResponse findById(final String id) {
 
-        return userMapper.fromEntity(userRepository.findById(id).orElse(null));
+        return userMapper.fromEntity(userRepository.findById(id).orElseThrow(() -> new RuntimeException("Object not found. Id: " + id + ", " +
+                "Type: " + UserResponse.class.getSimpleName()
+        ))
+        );
      //   return userRepository.findById(id).orElse(null);
     }
 }
