@@ -1,6 +1,7 @@
 package br.com.victoroliveira.userserviceapi.mapper;
 
 import br.com.victoroliveira.userserviceapi.entity.User;
+import models.requests.CreateUserRequest;
 import models.responses.UserResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,4 +17,8 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 public interface UserMapper {
 
     UserResponse fromEntity(final User entity);
+
+
+    @Mapping(target = "id", ignore = true)
+    User fromRequest(CreateUserRequest createUserRequest);
 }

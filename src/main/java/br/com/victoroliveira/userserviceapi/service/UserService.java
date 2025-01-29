@@ -4,6 +4,7 @@ import br.com.victoroliveira.userserviceapi.entity.User;
 import br.com.victoroliveira.userserviceapi.mapper.UserMapper;
 import br.com.victoroliveira.userserviceapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import models.requests.CreateUserRequest;
 import models.responses.UserResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,5 +23,9 @@ public class UserService {
         ))
         );
      //   return userRepository.findById(id).orElse(null);
+    }
+
+    public void save(CreateUserRequest createUserRequest) {
+        userRepository.save(userMapper.fromRequest(createUserRequest));
     }
 }
